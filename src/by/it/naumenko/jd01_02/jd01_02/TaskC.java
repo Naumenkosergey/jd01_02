@@ -64,9 +64,9 @@ public class TaskC {
                     sum += mas[i][j];
                 }
             }
-            if (kol == 1)
-                sum = 0;
-            System.out.println(sum);
+//            if (kol == 1)
+//                sum = 0;
+//            System.out.println(sum);
 //            System.out.println("Сумма элементов " + i + "ой" + " строки = " + sum);
             summa += sum;
         }
@@ -74,7 +74,8 @@ public class TaskC {
         return summa;
 
     }
-//максимальный элемент
+
+    //максимальный элемент
     static int maxArray(int[][] mas) {
         int max = mas[0][0];
         for (int i = 0; i < mas.length; i++) {
@@ -86,7 +87,8 @@ public class TaskC {
         }
         return max;
     }
-//номер строки шде максимальный элемент
+
+    //номер строки шде максимальный элемент
     static int maxArrayIndI(int[][] mas) {
         int max = maxArray(mas);
         int ind_i = 0;
@@ -99,6 +101,7 @@ public class TaskC {
         }
         return ind_i;
     }
+
     //номер столбца шде максимальный элемент
     static int maxArrayIndJ(int[][] mas) {
         int max = maxArray(mas);
@@ -114,28 +117,54 @@ public class TaskC {
     }
 
     static int[][] step3(int[][] mas) {
-        int[][] matrix = new int[mas.length][mas.length];
-        int ind_i = maxArrayIndI(mas);
-        int ind_j = maxArrayIndJ(mas);
-        int max = maxArray(mas);
-        System.out.println(max + " " + ind_i + " " + ind_j);
-        for (int i = 0, str = 0; str < mas.length - 1; ) {
-            if (i != ind_i) {
-                for (int j = 0, stb = 0; stb < mas.length - 1; j++, stb++) {
-                    if (j == ind_j)
-                        j++;
-                    matrix[str][stb] = mas[i][j];
-                }
-                i++;
-                str++;
-            } else
-                i++;
-        }
-        mas = matrix;
-        printArrayNew(mas);
-        //step3(mas);
-        return mas;
 
+        //int ind_i = maxArrayIndI(mas);
+        //int ind_j = maxArrayIndJ(mas);
+        boolean[] delCol = new boolean[mas.length];
+        boolean[] delRow = new boolean[mas.length];
+
+        int max = maxArray(mas);
+        int col = mas.length;
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[i].length; j++) {
+                if (mas[i][j] == max) {
+                    delCol[j] = true;
+                    delRow[i] = true;
+                    col--;
+                }
+            }
+        }
+
+        int k = 0;
+        int[][] matrix = new int[col][col];
+        System.out.println(col);
+        for (int i = 0; i < mas.length; i++) {
+            int t=0;
+            boolean zap=false;
+            for (int j = 0; j < mas[i].length; j++) {
+                if ((delRow[i] == false) && (delCol[j] == false)) {
+                    matrix[k][t] = mas[i][j];
+                    t++;
+                    zap=true;
+                }
+            }
+            if(zap)
+                k++;
+        }
+
+//        System.out.println();
+//        for (int i = 0; i < delCol.length; i++) {
+//            System.out.print(delCol[i] + "  ");
+//        }
+//
+//        System.out.println();
+//        for (int i = 0; i < delRow.length; i++) {
+//            System.out.print(delRow[i] + "  ");
+//        }
+
+        System.out.println();
+        printArray(matrix);
+        return matrix;
     }
 
     public static void main(String[] args) {

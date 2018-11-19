@@ -12,7 +12,5 @@ public class Ranner {
         double[] arr = InOut.getArray(line);
         InOut.printArray(arr);
         InOut.printArray(arr,"T",3);
-
-
     }
 }
