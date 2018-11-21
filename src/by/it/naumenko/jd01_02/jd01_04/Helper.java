@@ -31,9 +31,9 @@ public class Helper {
                 }
             }
         }
-        for (double element : arr) {
-            System.out.print(element + " ");
-        }
+//        for (double element : arr) {
+//            System.out.print(element + " ");
+//        }
     }
 
     static double[] mul(double[][] matrix, double[] vector) {

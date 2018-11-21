@@ -23,6 +23,7 @@ public class TaskA {
         InOut.printArray(array,"V",5);
         Helper.sort(array);
         System.out.println();
+        InOut.printArray(array,"V",4);
         firstIndex(array, first);
         lastIndex(array, last);
 
@@ -38,7 +39,6 @@ public class TaskA {
     }
 
     private static void firstIndex(double[] array, double first) {
-        InOut.printArray(array,"V",4);
         for (int i = 0; i < array.length; i++) {
             if(array[i]==first){
                 System.out.printf("index of first element=%d\n",i);
@@ -49,6 +49,6 @@ public class TaskA {
 
     public static void main(String[] args) {
         printMulTable();
-        buildOneDimArray("1 7 8 9 4 6");
+        buildOneDimArray("123 99 88 77 66 5 4 3 1 0 2");
     }
 }

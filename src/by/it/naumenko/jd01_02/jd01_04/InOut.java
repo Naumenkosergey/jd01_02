@@ -27,7 +27,7 @@ public class InOut {
         int col = 0;
         for (int i = 0; i < arr.length; i++) {
             //v[ 0 ]=-123.56
-            System.out.printf("%s[%- 3d]=%-10.5f", name, i, arr[i]);
+            System.out.printf("%s[%- 3d]=%-10.5f ", name, i, arr[i]);
             col++;
             if ((col % columnCount == 0)||(col==arr.length))
                 System.out.println();
